@@ -1,0 +1,44 @@
+"""courseproject URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from . import views
+
+#for dispay image
+from django.conf.urls.static import static
+from django.conf import settings
+media_url=settings.MEDIA_URL
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('register/',views.register),
+    path('',views.home),
+    path('login/',views.login),
+    path('studenthome/',views.studenthome),
+    path('adminhome/',views.adminhome),
+    path('logout1/',views.logout1),
+    path('addcourse/',views.addcourse),
+    path('courselist/',views.courselist),
+    path('addbatch/',views.addbatch),
+    path('batchlist1/',views.batchlist1),
+    path('studentlist/',views.studentlist),
+    path('courselist1/',views.courselist1),
+    path('batchlist2/',views.batchlist2),
+    path('viewprofile/',views.viewprofile),
+    path('admission/',views.admission),
+    path('success/',views.success),
+    
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
